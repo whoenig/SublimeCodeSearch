@@ -1,0 +1,10 @@
+[
+  {
+    "caption": "Code Search",
+    "command": "code_search"
+  },
+  {
+    "caption": "Code Search Index",
+    "command": "code_search_index"
+  }
+]

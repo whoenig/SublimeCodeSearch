@@ -1,0 +1,10 @@
+/*
+  CodeSearch default settings
+  Do not change this file; change your user settings file instead
+  */
+{
+  /* path to cindex executable */
+  "path_cindex": "cindex",
+  /* path to csearch executable */
+  "path_csearch": "csearch",
+}
