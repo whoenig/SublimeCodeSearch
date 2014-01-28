@@ -13,7 +13,7 @@ class CodeSearchIndexCommand(sublime_plugin.WindowCommand):
 		data = self.window.project_data()
 		self.folders = []
 		for folder in data["folders"]:
-			self.folders.append(os.expanduser(folder["path"]))
+			self.folders.append(os.path.expanduser(folder["path"]))
 
 		if "code_search" in data:
 			if "csearchindex" in data["code_search"]:
