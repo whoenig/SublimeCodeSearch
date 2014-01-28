@@ -13,11 +13,11 @@ class CodeSearchIndexCommand(sublime_plugin.WindowCommand):
 		data = self.window.project_data()
 		self.folders = []
 		for folder in data["folders"]:
-			self.folders.append(folder["path"])
+			self.folders.append(os.expanduser(folder["path"]))
 
 		if "code_search" in data:
 			if "csearchindex" in data["code_search"]:
-				self.csearchindex = data["code_search"]["csearchindex"]
+				self.csearchindex = os.path.expanduser(data["code_search"]["csearchindex"])
 				settings = sublime.load_settings('CodeSearch.sublime-settings')
 				self.path_cindex = settings.get("path_cindex")
 				indexThread = threading.Thread(target=self.runIndexing)

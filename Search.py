@@ -36,7 +36,7 @@ class CodeSearchCommand(sublime_plugin.WindowCommand):
 		data = self.window.project_data()
 		if "code_search" in data:
 			if "csearchindex" in data["code_search"]:
-				self.csearchindex = data["code_search"]["csearchindex"]
+				self.csearchindex = os.path.expanduser(data["code_search"]["csearchindex"])
 				settings = sublime.load_settings('CodeSearch.sublime-settings')
 				self.path_csearch = settings.get("path_csearch")
 				self.window.show_input_panel(
