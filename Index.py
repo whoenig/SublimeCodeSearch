@@ -27,6 +27,9 @@ class CodeSearchIndexCommand(sublime_plugin.WindowCommand):
 		sublime.error_message("Please add 'code_search':{ 'csearchindex': '<path-to-the-index-file>'} to your project!")
 
 	def runIndexing(self):
+		csearchdir = os.path.dirname(self.csearchindex)
+		if not os.path.isdir(csearchdir):
+			os.makedirs(csearchdir)
 		self.indexing = True
 		project_file_name = self.window.project_file_name()
 		working_dir = os.path.dirname(project_file_name)
