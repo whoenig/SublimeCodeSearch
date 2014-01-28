@@ -42,8 +42,11 @@ class CodeSearchIndexCommand(sublime_plugin.WindowCommand):
 		my_env = os.environ.copy()
 		my_env["CSEARCHINDEX"] = self.csearchindex
 		commandLine = [self.path_cindex, "-verbose", self.folders]
-		startupinfo = subprocess.STARTUPINFO()
-		startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+		try:
+			startupinfo = subprocess.STARTUPINFO()
+			startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+		except:
+			startupinfo = None
 		self.popen = subprocess.Popen(commandLine, cwd=working_dir, env=my_env, startupinfo=startupinfo, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		stdoutQueue = Queue()
 		readStdOutThread = threading.Thread(target=self.readStdout, args=(self.popen.stdout, stdoutQueue))
